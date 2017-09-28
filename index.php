@@ -19,5 +19,24 @@
 
     echo "The post_data response is: " . $postResponse . "<br>";
     ?>
+
+    <form action="" method="post">
+      <label>Name: <input type="text" name="name"></label>
+      <input type="submit" name="submit-name">
+    </form>
+
+    <?php
+    if(isset($_POST["submit-name"])) {
+      $payload = array(
+        "name" => $_POST["name"]
+      );
+      $postResponse = $fr->postRequest("form_post", $payload);
+      echo $postResponse;
+    }
+    else {
+      echo "Please enter a name and submit the form.";
+    }
+    ?>
+
   </body>
 </html>

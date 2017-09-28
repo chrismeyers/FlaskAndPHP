@@ -21,5 +21,12 @@ def post_data():
     return data["key"]
 
 
+@app.route("/form_post", methods=["POST"])
+def form_post():
+    data = json.loads(request.data)
+    greeting = "Greetings, {0}!".format(data["name"].capitalize())
+    return greeting
+
+
 if __name__ == "__main__":
     app.run(host="localhost", port=5000, debug=True)
